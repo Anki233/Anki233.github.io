@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://anki233.github.io</id>
-    <title>Gridea</title>
-    <updated>2021-04-27T11:06:13.946Z</updated>
+    <title>悠悠小路</title>
+    <updated>2021-04-27T11:15:39.677Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://anki233.github.io"/>
     <link rel="self" href="https://anki233.github.io/atom.xml"/>
     <subtitle>我喜欢你年少的纯真无邪 喜欢则义无反顾 而不是如今你斤斤计较的样子 对什么都有顾虑</subtitle>
     <logo>https://anki233.github.io/images/avatar.png</logo>
     <icon>https://anki233.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Gridea</rights>
+    <rights>All rights reserved 2021, 悠悠小路</rights>
     <entry>
         <title type="html"><![CDATA[今日面试题总结2]]></title>
         <id>https://anki233.github.io/post/jin-ri-mian-shi-ti-zong-jie-2/</id>
