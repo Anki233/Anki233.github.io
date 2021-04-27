@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://anki233.github.io</id>
     <title>Gridea</title>
-    <updated>2021-04-27T10:27:02.190Z</updated>
+    <updated>2021-04-27T11:05:35.681Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://anki233.github.io"/>
     <link rel="self" href="https://anki233.github.io/atom.xml"/>
@@ -11,35 +11,935 @@
     <icon>https://anki233.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Gridea</rights>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://anki233.github.io/post/hello-gridea/</id>
-        <link href="https://anki233.github.io/post/hello-gridea/">
+        <title type="html"><![CDATA[今日面试题总结2]]></title>
+        <id>https://anki233.github.io/post/jin-ri-mian-shi-ti-zong-jie-2/</id>
+        <link href="https://anki233.github.io/post/jin-ri-mian-shi-ti-zong-jie-2/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <updated>2021-04-07T14:03:35.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="js判断字符串小括号是否成对合法">JS判断字符串小括号是否成对合法</h3>
+<p>一、思路</p>
+<ol>
+<li>
+<p>要判断（）是否成对；</p>
+</li>
+<li>
+<p>运用栈的“后进先出“ 的特点，定义一个空数组，作为栈；</p>
+</li>
+<li>
+<p>for循环遍历字符串，当遇到“（”的时候就把“（”添加到空数组最顶端，push方法，记录发现一个左括号；</p>
+</li>
+<li>
+<p>当遇到“）”就把数组中最顶端的元素弹出来，pop方法，抵消一个左括号。注意如果此时数组是空的，但是遇到“）”说明没有“（”缺少成对的“）”，则返回false；</p>
+</li>
+<li>
+<p>不是括号的字符就不用考虑，让for循环继续执行，continue。</p>
+</li>
+<li>
+<p>遍历完成后，判断栈是否为空。如果为空则表明左右括号数量刚好抵消，则返回true，否则返回false。</p>
+</li>
+</ol>
+<p>二、代码</p>
+<pre><code class="language-javascript">function check(string) {
+    var a = [];
+    for (var i = 0; i &lt; string.length; i++) {
+        var item = string[i];
+        if (item === &quot;(&quot;) {
+            a.push(&quot;(&quot;);
+        } else if (item === &quot;)&quot;) {
+            if (a.length === 0) {
+                return false;
+            } else {
+                a.pop();
+            }
+        } else {
+            continue;
+        }
+    }
+    ;
+    return a.length === 0;
+};
+
+
+console.log(&quot;(asd):&quot;, check(&quot;(asd)&quot;));
+console.log(&quot;asd(asd(adsfsdf(asdf())))):&quot;, check(&quot;asd(asd(adsfsdf(asdf()))))&quot;));
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[今日面试题总结1]]></title>
+        <id>https://anki233.github.io/post/jin-ri-mian-shi-ti-zong-jie-1/</id>
+        <link href="https://anki233.github.io/post/jin-ri-mian-shi-ti-zong-jie-1/">
+        </link>
+        <updated>2020-09-28T13:58:21.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#js%E4%B8%ADbind%E7%9A%84%E7%94%A8%E6%B3%95%E5%8F%8A%E4%B8%8Ecall%E5%92%8Capply%E7%9A%84%E5%8C%BA%E5%88%AB">js中bind的用法，及与call和apply的区别</a></li>
+<li><a href="#computed-%E5%92%8C-methods-%E7%9A%84%E5%8C%BA%E5%88%AB">computed 和 methods 的区别？</a>
+<ul>
+<li><a href="#1-%E7%9B%B8%E5%90%8C%E7%82%B9">1、相同点</a></li>
+<li><a href="#2-%E4%B8%8D%E5%90%8C%E7%82%B9">2、不同点</a></li>
+</ul>
+</li>
+<li><a href="#instanceof">instanceof</a><br>
+*
+<ul>
+<li><a href="#%E6%80%BB%E7%BB%93%E4%B8%A4%E7%82%B9%E4%B8%8Einstanceof-%E6%9C%89%E5%85%B3%E7%9A%84%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9F%A5%E8%AF%86">总结两点与instanceof 有关的原型链知识：</a></li>
+</ul>
+</li>
+<li><a href="#js%E6%95%B0%E7%BB%84%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F">JS数组添加元素的三种方式</a>
+<ul>
+<li><a href="#1-push-%E7%BB%93%E5%B0%BE%E6%B7%BB%E5%8A%A0">1、push() 结尾添加</a></li>
+<li><a href="#2-unshift-%E5%A4%B4%E9%83%A8%E6%B7%BB%E5%8A%A0">2、unshift() 头部添加</a></li>
+<li><a href="#3-splice-%E6%96%B9%E6%B3%95%E5%90%91%E4%BB%8E%E6%95%B0%E7%BB%84%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E6%B7%BB%E5%8A%A0%E5%88%A0%E9%99%A4%E9%A1%B9%E7%9B%AE%E7%84%B6%E5%90%8E%E8%BF%94%E5%9B%9E%E8%A2%AB%E5%88%A0%E9%99%A4%E7%9A%84%E9%A1%B9%E7%9B%AE">3、splice() 方法向/从数组指定位置添加/删除项目，然后返回被删除的项目。</a></li>
+</ul>
+</li>
+<li><a href="#css%E4%B8%89%E5%88%97%E5%B8%83%E5%B1%80-%E4%B8%A4%E8%BE%B9%E5%9B%BA%E5%AE%9A%E4%B8%AD%E9%97%B4%E8%87%AA%E9%80%82%E5%BA%94">css三列布局--两边固定中间自适应</a>
+<ul>
+<li><a href="#1flex%E5%B8%83%E5%B1%80">1.flex布局</a></li>
+<li><a href="#2%E5%88%A9%E7%94%A8%E6%B5%AE%E5%8A%A8float">2.利用浮动（float）</a></li>
+<li><a href="#3%E5%88%A9%E7%94%A8%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8Dposition">3.利用绝对定位（position）</a></li>
+<li><a href="#4%E5%AF%B9%E4%B8%AD%E9%97%B4%E7%9A%84%E5%AE%BD%E5%BA%A6%E8%BF%9B%E8%A1%8Ccalc%E8%AE%A1%E7%AE%97">4.对中间的宽度进行calc计算</a></li>
+<li><a href="#5%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80%E9%87%8D%E7%82%B9%E6%9D%A5%E4%BA%86">5.双飞翼布局（重点来了）</a></li>
+<li><a href="#6%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80%E4%B9%9F%E6%98%AF%E9%87%8D%E7%82%B9">6.圣杯布局（也是重点）</a></li>
+</ul>
+</li>
+<li><a href="#css%E4%B8%89%E5%88%97%E5%B8%83%E5%B1%80-%E4%B8%AD%E9%97%B4%E5%9B%BA%E5%AE%9A%E4%B8%A4%E8%BE%B9%E8%87%AA%E9%80%82%E5%BA%94">css三列布局--中间固定两边自适应</a>
+<ul>
+<li><a href="#1css3%E5%B8%83%E5%B1%80">1.css3布局</a></li>
+<li><a href="#2flex%E5%B8%83%E5%B1%80">2.flex布局</a></li>
+<li><a href="#3%E5%B7%A6%E5%8F%B3%E5%88%A9%E7%94%A8calc%E5%87%BD%E6%95%B0%E8%AE%A1%E7%AE%97">3.左右利用calc()函数计算</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h3 id="js中bind的用法及与call和apply的区别">js中bind的用法，及与call和apply的区别</h3>
+<ul>
+<li>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的</li>
+<li>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文</li>
+<li>apply 、 call 、bind 三者都可以利用后续参数传参</li>
+<li>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用</li>
+</ul>
+<h3 id="computed-和-methods-的区别">computed 和 methods 的区别？</h3>
+<h4 id="1-相同点">1、相同点</h4>
+<ul>
+<li>如果作为模板的数据显示，二者能实现响应的功能，唯一不同的是methods定义的方法需要执行</li>
+</ul>
+<h4 id="2-不同点">2、不同点</h4>
+<ul>
+<li>computed 会基于响应数据缓存，methods不会缓存</li>
+<li>diff之前先看data里的数据是否发生变化，如果没有变化computed的方法不会执行，但methods里的方法会执行</li>
+</ul>
+<h3 id="instanceof">instanceof</h3>
+<blockquote>
+<p>instanceof 运算符用于测试构造函数的 prototype 属性是否出现在对象原型链中的任何位置</p>
+</blockquote>
+<blockquote>
+<p>检测对象A是不是另一个对象B的实例的原理是：查看对象B的prototype属性指向的原型对象是否在对象A的原型链上，若在则返回true，若不在则返回false。</p>
+</blockquote>
+<p>判断 B 的 prototype 属性指向的原型对象(B.prototype)是否在对象 A 的原型链上。<br>
+如果在，则为 true；如果不在，则为 false。</p>
+<h5 id="总结两点与instanceof-有关的原型链知识">总结两点与instanceof 有关的原型链知识：</h5>
+<ol>
+<li>所有 JavaScript 对象都有 <strong>proto</strong> 属性，只有 Object.prototype.<strong>proto</strong> === null</li>
+<li>构造函数的 prototype 属性指向它的原型对象，而构造函数实例的 <strong>proto</strong> 属性也指向该原型对象</li>
+</ol>
+<h3 id="js数组添加元素的三种方式">JS数组添加元素的三种方式</h3>
+<h4 id="1-push-结尾添加">1、push() 结尾添加</h4>
+<p>数组.push(元素)</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>newelement1</td>
+<td>必需。要添加到数组的第一个元素。</td>
+</tr>
+<tr>
+<td>newelement2</td>
+<td>可选。要添加到数组的第二个元素。</td>
+</tr>
+<tr>
+<td>newelementX</td>
+<td>可选。可添加多个元素。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-unshift-头部添加">2、unshift() 头部添加</h4>
+<p>数组.unshift(元素)</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>newelement1</td>
+<td>必需。向数组添加的第一个元素。</td>
+</tr>
+<tr>
+<td>newelement2</td>
+<td>可选。向数组添加的第二个元素。</td>
+</tr>
+<tr>
+<td>newelementX</td>
+<td>可选。可添加若干个元素。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-splice-方法向从数组指定位置添加删除项目然后返回被删除的项目">3、splice() 方法向/从数组指定位置添加/删除项目，然后返回被删除的项目。</h4>
+<p></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td>必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。</td>
+</tr>
+<tr>
+<td>howmany</td>
+<td>必需。要删除的项目数量。如果设置为 0，则不会删除项目。</td>
+</tr>
+<tr>
+<td>item1, ..., itemX</td>
+<td>可选。向数组添加的新项目。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="css三列布局-两边固定中间自适应">css三列布局--两边固定中间自适应</h3>
+<h4 id="1flex布局">1.flex布局</h4>
+<p>思路：将父元素box设为display:flex;可将box设置为弹性盒模型进行布局</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			#box{
+				width:100%;
+				height:100px;
+				display:flex;
+				margin:10px;
+			}
+			#left,#right{
+				width:200px;
+				height:100px;
+				margin:10px;
+				background-color:#999;
+			}
+			#center{
+				flex:1;
+				height:100px;
+				margin:10px;/*左右margin不会叠加*/
+				background-color:#f00;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div id=&quot;box&quot;&gt;
+			&lt;div id=&quot;left&quot;&gt;left&lt;/div&gt;
+			&lt;div id=&quot;center&quot;&gt;center&lt;/div&gt;
+			&lt;div id=&quot;right&quot;&gt;right&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="2利用浮动float">2.利用浮动（float）</h4>
+<p>让左右元素浮动，缺点是中间元素必须置于二者之后，不然right元素会进入下一行</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  
+    &lt;html&gt;  
+        &lt;head&gt;  
+            &lt;meta charset=&quot;UTF-8&quot;&gt;  
+            &lt;title&gt;&lt;/title&gt;  
+            &lt;style type=&quot;text/css&quot;&gt;
+            	.left,.right{
+            		width:200px;
+            		height:200px;
+            		background-color:#999;
+            	}
+            	.left{
+            		float:left;
+            	}
+            	.right{
+            		float:right;
+            	}
+            	.center{
+            		margin:0 200px;
+            		height:300px;
+            		background-color:#f00;
+            	}
+            &lt;/style&gt;  
+        &lt;/head&gt;  
+        &lt;body&gt;  
+            &lt;!--该布局法的好处是受外界影响小，但是不足是 三个元素的顺序，center一定要放在最后，这是            	
+		            和绝对定位不一样的地方，center占据文档流位置，所以一定要放在最后，左右两个元素位置没有关系。
+		            当浏览器窗口很小的时候，右边元素会被击倒下一行。--&gt;
+            &lt;div class=&quot;left&quot;&gt;left&lt;/div&gt;
+            &lt;div class=&quot;right&quot;&gt;right&lt;/div&gt;
+            &lt;div class=&quot;center&quot;&gt;center&lt;/div&gt;
+            
+        &lt;/body&gt;  
+	&lt;/html&gt;
+</code></pre>
+<h4 id="3利用绝对定位position">3.利用绝对定位（position）</h4>
+<p>center居中并利用margin为左右两边留出位置，左右绝对定位</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;css三列布局&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;		
+			/*左右固定，中间自适应  利用绝对定位*/
+			.container{
+			    width: 100%;
+			    height: 100%;
+			    position: relative;
+			}
+			.left{
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    width: 400px;
+			    height: 200px;
+			    background-color: black;
+			    color:#fff;
+			}
+			.center{
+			    /*width: auto;*/   /*如果没有这一句，那么，center这个div的文字就不会自动换行*/
+			    margin: 0 400px;
+			    height: 400px;
+			    background-color: yellow;
+			}
+			.right{
+			    position: absolute;
+			    top: 0;
+			    right: 0;
+			    width: 400px;
+			    height: 300px;
+			    background-color: red;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class=&quot;container&quot;&gt;
+		    &lt;div class=&quot;left&quot;&gt;left&lt;/div&gt;
+		    &lt;div class=&quot;center&quot;&gt;center&lt;/div&gt;
+		    &lt;div class=&quot;right&quot;&gt;right&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="4对中间的宽度进行calc计算">4.对中间的宽度进行calc计算</h4>
+<p>三个元素都向左浮动，左右定宽，中间的对其进行计算，让100%宽度减去左右宽度，即为中间宽度</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			.container{
+				overflow: hidden;
+			}
+			.left,.right{
+				float: left;
+				width: 100px;
+				background:red;
+			}
+			.center{
+				float: left; 
+				width:calc(100% - 200px);
+				background:yellow;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+	    &lt;div class=&quot;container&quot;&gt;
+		&lt;div class=&quot;left&quot;&gt;left&lt;/div&gt;
+	        &lt;div class=&quot;center&quot;&gt;center&lt;/div&gt;
+	        &lt;div class=&quot;right&quot;&gt;right&lt;/div&gt;
+	    &lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="5双飞翼布局重点来了">5.双飞翼布局（重点来了）</h4>
+<p>目的：为了优先显示中间主要部分，浏览器渲染引擎在构建和渲染渲染树是异步的（谁先构建好谁先显示），故在编写时，先构建中间main部分，但由于布局原因，将left置于center左边，故而出现了双飞翼布局。</p>
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			body {min-width: 550px;}
+			.col {float: left;}			
+			#main {
+				width: 100%;
+				height: 200px;
+				background-color: #ccc;
+			}			
+			#main-wrap {
+				margin: 0 190px;
+                /*这是圣杯和双飞翼最明显的区别，在main内部使用的是margin，而圣杯是直接在container部分使用padding*/		
+			}
+            #left,#right {
+				width: 190px;
+				height: 200px;
+				background-color: #0000FF;
+			}	
+			#left{
+				margin-left: -100%;
+			}		
+			#right {
+				margin-left: -190px;
+				background-color: #FF0000;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div id=&quot;container&quot;&gt;
+		    &lt;div id=&quot;main&quot; class=&quot;col&quot;&gt;
+		        &lt;div id=&quot;main-wrap&quot;&gt; #main &lt;/div&gt;
+		    &lt;/div&gt;
+		    &lt;div id=&quot;left&quot; class=&quot;col&quot;&gt;#left&lt;/div&gt;
+		    &lt;div id=&quot;right&quot; class=&quot;col&quot;&gt;#right&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>这种布局的好处是：两边（left和right）不会盖住中间(center)部分，left和right盖住的是wrap元素的两边，即main-wrap的margin部分</p>
+<h4 id="6圣杯布局也是重点">6.圣杯布局（也是重点）</h4>
+<p>优先渲染主要部分</p>
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt; 
+		.wrapper {
+			padding: 0 100px; 
+			overflow:hidden;
+		}
+		.col {
+			position: relative; 
+			float: left;
+		}
+		.main {
+			width: 100%;
+			height: 200px;
+			background:yellow;
+		}
+		.left,.right {
+			width: 100px; 
+			height: 200px; 
+			background:red;
+		}
+		.left{
+			margin-left: -100%;
+			left: -100px;
+		}
+		.right {
+			margin-left: -100px; 
+			right: -100px;
+		}
+		
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;section class=&quot;wrapper&quot;&gt;
+		    &lt;section class=&quot;col main&quot;&gt;main&lt;/section&gt;
+		    &lt;aside class=&quot;col left&quot;&gt;left&lt;/aside&gt;
+		    &lt;aside class=&quot;col right&quot;&gt;right&lt;/aside&gt;
+		&lt;/section&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="css三列布局-中间固定两边自适应">css三列布局--中间固定两边自适应</h3>
+<h4 id="1css3布局">1.css3布局</h4>
+<p>​	目前没有浏览器支持 box-flex 属性。Firefox 支持替代的 -moz-box-flex 属性。Safari、Opera 以及 Chrome 支持替代的 -webkit-box-flex 属性。</p>
+<p>box-flex 属性规定框的子元素是否可伸缩其尺寸。提示：可伸缩元素能够随着框的缩小或扩大而缩写或放大。只要框中有多余的空间，可伸缩元素就会扩展来填充这些空间。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            div[class=me] { 
+                display: -webkit-box;
+            }
+            div div { 
+                background: red; 
+                height: 100px;
+            }
+            div div:nth-child(1) {
+                -webkit-box-flex:1;
+            }
+            div div:nth-child(2) { 
+                width: 800px; 
+                background: #ccc;
+            }
+            div div:nth-child(3) {
+                -webkit-box-flex:1;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;me&quot;&gt;
+            &lt;div&gt;left&lt;/div&gt;
+            &lt;div&gt;center&lt;/div&gt;
+            &lt;div&gt;right&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="2flex布局">2.flex布局</h4>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			*{
+				margin:0;
+				padding:0;
+			}
+			.wrap{
+				display:flex;
+				flex-direction:row;
+				margin-top:20px;
+			}
+			.center{
+				width:800px;
+				text-align:center;
+				background:#ccc;
+			}
+			.left,.right{
+				/*flex-grow 属性用于设置或检索弹性盒的扩展比率。*/
+	                        flex-grow: 1;
+	                        line-height: 30px;
+	                        background:red;
+	                }
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class=&quot;wrap&quot;&gt;
+			&lt;div class=&quot;left&quot;&gt;left&lt;/div&gt;
+			&lt;div class=&quot;center&quot;&gt;center&lt;/div&gt;
+			&lt;div class=&quot;right&quot;&gt;right&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="3左右利用calc函数计算">3.左右利用calc()函数计算</h4>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			#container{
+				height:200px;
+				width: 100%;
+			}
+			
+			#left,#right{
+				float:left;
+				background-color:#ccc;
+				height:100%;
+				width: calc(50% - 500px);
+			}
+			#center{
+				float:left;
+				background-color:yellow;
+				height:100%;
+				width:1000px;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div id=&quot;container&quot;&gt;
+			&lt;div id=&quot;left&quot;&gt;left&lt;/div&gt;
+			&lt;div id=&quot;center&quot;&gt;center&lt;/div&gt;
+			&lt;div id=&quot;right&quot;&gt;right&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[随手节选/摘抄]]></title>
+        <id>https://anki233.github.io/post/sui-shou-jie-xuan-zhai-chao/</id>
+        <link href="https://anki233.github.io/post/sui-shou-jie-xuan-zhai-chao/">
+        </link>
+        <updated>2020-09-18T07:53:12.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E4%BA%BA%E9%97%B4%E6%9C%80%E5%BE%97%E6%84%8F">人间最得意</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h3 id="人间最得意">人间最得意</h3>
+<blockquote>
+<p>李扶摇忽然郑重说道：“吃够了苦，便想着以后所到之处都是没有苦难的地方，但谁都知道不可能如此，<br>
+但心里依旧奢望，没有达到预期，自然便会失望，其余地方我也谈不上失望，可这里是少梁城，<br>
+自然会失望的。兴许很多年之后我能理解了，可绝不是现在。”</p>
+</blockquote>
+<h3 id="其他">其他</h3>
+<blockquote>
+<p><del>千娇百媚终过眼,不如你于我心动<br>
+千娇百媚终过眼,不若你我初相见</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[好句/热评]]></title>
+        <id>https://anki233.github.io/post/hao-ju-re-ping/</id>
+        <link href="https://anki233.github.io/post/hao-ju-re-ping/">
+        </link>
+        <updated>2020-01-05T04:48:30.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E7%83%AD%E8%AF%84">热评</a></li>
+<li><a href="#%E5%8F%A5%E5%AD%90">句子</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h3 id="热评">热评</h3>
+<blockquote>
+<p>可能我真的有社交恐惧症吧，从小不敢在人群前讲话，一本正经地回答别人的玩笑，<br>
+不敢插话接话怕毁了聊天，总是给人高冷的形象，但我真的很珍惜你们，和我主动打招呼我都非常开心，总是考虑别人怕惹人不快，别人一句话能寻思半天。<br>
+敏感又自卑，但我是善良的啊。<br>
+--选自网易云音乐《Somnambulating》热评</p>
+</blockquote>
+<blockquote>
+<p>莱蒙托夫有首诗这样写：一只船孤独的航行在海上，它既不寻求幸福，<br>
+也不逃避幸福，它只是向前航行，底下是沉静碧蓝的大海，<br>
+而头顶是金色的太阳。								<br>
+--选自网易云音乐《Oceano》热评</p>
+</blockquote>
+<blockquote>
+<p>热闹只是一时的消耗品，而撑起你人生的是整个孤独。	<br>
+--选自网易云音乐《Fireflies》热评</p>
+</blockquote>
+<blockquote>
+<p>唯一比孤独更可怕的，是被人知道你孤独。<br>
+--选自网易云音乐《Lonely God》热评</p>
+</blockquote>
+<blockquote>
+<p>MD，活了几十年，却被天下抛弃。本来心存高远，却渐渐走上了平凡之路。<br>
+--选自网易云音乐《Aphrodite》热评</p>
+</blockquote>
+<blockquote>
+<p>总不能还没努力就向生活妥协吧。<br>
+--选自网易云音乐《我曾》热评</p>
+</blockquote>
+<blockquote>
+<p>你一直在翻找着评论，就是在找一个替你讲故事的人。		                                                                        --选自网易云音乐《迷途羔羊》热评</p>
+</blockquote>
+<blockquote>
+<p>“永远要记得，被命运打趴下的时候，我们还是要爬起来，怕怕身上的土，说：“来，咱们三局两胜。””  				                            --选自网易云音乐《破冰》热评</p>
+</blockquote>
+<blockquote>
+<p>“每个人都可以变成光。”这句话还有多少人相信着？																				--选自网易云音乐《Love Theme from TIGA 》热评</p>
+</blockquote>
+<blockquote>
+<p>努力，不是为了给谁看，只是不想愧对那个曾经执着追梦的少年。																		--选自网易云音乐《失波（Lost Frequencis）》热评</p>
+</blockquote>
+<blockquote>
+<p>像我这样的人，根本不适合谈恋爱，更不适合结婚。我的情绪太不稳定，有敏感，想得太多，总是揣测对方的心意，然后又一遍遍的想是不是自己哪里出了问题。我根本不擅长沟通，不知道怎么跟一个朝夕共处的人好好处理遇到的分歧和问题。我想来想去，还是独自生活，更符合天性，也不会害人害己。				--选自网易云音乐《像我这样的人》热评</p>
+</blockquote>
+<blockquote>
+<p>有人问，是不是越成熟就越难爱上一个人	其实不是，只是越成熟越能看清那不是爱														--选自网易云音乐《也罢》热评</p>
+</blockquote>
+<blockquote>
+<p>突然想起村上春树说的一句话，“你要做一个不动声色的大人了。不准情绪化，不准偷偷想念，不准回头看。去过自己另外的生活。你要听话，不是所有的鱼都会生活在同一片海里。每一天晚上都要早早睡觉，不要熬夜，不要多想。”																--选自网易云音乐热评</p>
+</blockquote>
+<blockquote>
+<p>长这么大，你一定也经历过不少挫折和失望吧。有人说，活着就该逢山开路，遇水架桥。我以前固执地认为，只要你坚持努力，就没有你做不到的事情。后来我终于相信，有些事情不是你努力就会有结果，有些人也不是你坚持就能够得到的。															--选自网易云音乐《方圆几里》热评</p>
+</blockquote>
+<blockquote>
+<p>这世上有很多深情的人，他们看上去总是漫不经心。	--选自网易云音乐《Chasing All the Stars》热评</p>
+</blockquote>
+<blockquote>
+<p>我还是会偷偷看她的主页，看她喜欢的歌，她的听歌排行。试图在评论里找到她的一丝痕迹。可是，她不会看评论，不会听我分享的歌，不会喜欢我。			--选自网易云音乐《后继者》热评</p>
+</blockquote>
+<blockquote>
+<p>那些扬言要陪你走完一生的人，总是走到半途就不见了。大概人们就是这样，毫无征兆的说爱你，然后又悄无声息地离开。								--选自网易云音乐《别怕我伤心》热评</p>
+</blockquote>
+<blockquote>
+<p>上周在公司暗恋的女孩一直没来上班，还以为她辞职了，好伤心。今天她来上班了好开心，还给我们带来了喜糖。									--选自网易云音乐《我配不上你》热评</p>
+</blockquote>
+<blockquote>
+<p>你忙完回到家都是天黑了，你吼亮楼道的灯，拿出钥匙开门，摸黑打开卧室的灯，瘫倒在床上呼呼大睡。渴得醒来，床边的水壶却是空的，你又沉沉睡去，直到饿得受不了了才起床，打开冰箱，里面什么也没有，终于翻箱倒柜找到一包泡面，迫不及待的打开用温水泡好，吃的时候你笑了，这就是孤独的味道。			--选自网易云音乐《安和桥》热评</p>
+</blockquote>
+<blockquote>
+<p>明明在生气，故意不理对方。许久了才发现原来对方一直没在意或者根本不知道！才发现自己一直做无用功的闷气。然后别人稍微对自己好一点就瞬间原谅对方，甚至觉得是自己错了。悲伤，一切都只是自己的内心戏，根本没人注意到。																--选自网易云音乐《我知道你都知道》热评</p>
+</blockquote>
+<blockquote>
+<p>我开始把东西写得晦涩难懂，而越晦涩越让我感到安全。只有在足够安全的时候，“一个我”才能幸灾乐祸地说，“哈哈哈终于不知道我在说什么了吧”，然而接下来，“另一个我”就会问“难道有人想知道么”。																					--选自网易云音乐《Lonely God》热评</p>
+</blockquote>
+<blockquote>
+<p>有些人第一面看到就不会甘心做朋友，可往往最后连朋友也做不了。																	--选自网易云音乐《有多少爱可以重来》热评</p>
+</blockquote>
+<blockquote>
+<p>世界就像一台夹娃娃机，我隔着玻璃拼命只想得到你，有钱人却买走了机器。																--选自网易云音乐《路过》热评</p>
+</blockquote>
+<blockquote>
+<p>我知道日子难过，可这也太他妈难过了吧。						                                                                --选自网易云音乐《each night》热评</p>
+</blockquote>
+<blockquote>
+<p>成年人的默契是一言不发的疏远。										                                                    --选自网易云音乐热评</p>
+</blockquote>
+<blockquote>
+<p>吵架时都是自私的，都在维护自己的观点。						                                                                --选自网易云音乐热评</p>
+</blockquote>
+<blockquote>
+<p>她这个人是不行的，隔三岔五心态崩一下，完事还得认怂地把日子拼起来接着过，破罐子破摔她是不敢的。											--选自网易云音乐热评</p>
+</blockquote>
+<blockquote>
+<p>精神病院实习护士说，只有抑郁科我从来不敢去。别的科有杀人的，狂躁的，傻笑的，只有抑郁科是一点声音都没有的。								--选自网易云音乐《对不起》热评</p>
+</blockquote>
+<blockquote>
+<p>这个世界真恶心，还好我也不是什么好人。						                                                                --选自网易云音乐《WAITING》热评</p>
+</blockquote>
+<blockquote>
+<p>明明是个消极抑郁的人，人一多我就不受控制地阳光起来，真是奇怪。																	--选自网易云音乐《August》热评</p>
+</blockquote>
+<blockquote>
+<p>只要足够自闭孤僻，就不会轻易爱人了把。						                                                                --选自网易云音乐《Quiet Inside》热评</p>
+</blockquote>
+<blockquote>
+<p>抑郁症是一种非常可悲的病，因为别人永远也不可能感同身受。他们只会站着说话不腰疼，用一些虚浮无力的语言强行让你振作起来。即便有一天你不堪重负从楼上跳下去了，别人也只会说你脆弱，矫情，无病呻吟而已。事实上，是真有病啊，而且我也已经拼尽全力强忍着不发出呻吟了啊。			--选自网易云音乐《Starving》热评</p>
+</blockquote>
+<blockquote>
+<p>抑郁的人在装正常，而正常的人在装抑郁。						                                                                --选自网易云音乐热评</p>
+</blockquote>
+<h3 id="句子">句子</h3>
+<blockquote>
+<p>自杀的人不是自杀的，是好多人杀了他。</p>
+</blockquote>
+<blockquote>
+<p>你的恶毒和善良都不够纯粹，所以痛苦。</p>
+</blockquote>
+<blockquote>
+<p>心有灵犀形影双    花开花落不相忘</p>
+</blockquote>
+<blockquote>
+<p>世界上可没有真正的感同身受。</p>
+</blockquote>
+<blockquote>
+<p>执子之魂，与子共生。										                                            --千珏</p>
+</blockquote>
+<blockquote>
+<p>世界既不黑也不白，而是一道精致的灰。		                                                                --青钢影</p>
+</blockquote>
+<pre><code>备注：
+    
+    1. 没音乐名字，只是因为忘了（^_^）
+    2. 把自己喜欢的，在这里汇总，怕万一哪天忘了。</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[诗词]]></title>
+        <id>https://anki233.github.io/post/shi-ci/</id>
+        <link href="https://anki233.github.io/post/shi-ci/">
+        </link>
+        <updated>2019-09-26T07:45:33.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p>作者：仓央嘉措</p>
+<blockquote>
+<p>那一天，我闭目在经殿的香雾中，蓦然听见你颂经中的真言；<br>
+那一月，我摇动所有的经筒，不为超度，只为触摸你的指尖；<br>
+那一年，磕长头匍匐在山路，不为觐见，只为贴着你的温暖；<br>
+那一世，转山转水转佛塔，不为修来世，只为途中与你相见；<br>
+那一月，我轻转过所有经筒，不为超度，只为触摸你的掌纹；<br>
+那一年，我磕长头拥抱尘埃，不为朝佛，只为贴着你的温暖；<br>
+那一世，我细翻遍十万大山，不为修来世，只为路中能与你相遇；<br>
+只是，就在这一夜，我忘却了所有，抛弃了信仰，舍弃了轮回，<br>
+只为，那曾在佛前哭泣的玫瑰，早已失去旧日的光泽。</p>
+</blockquote>
+<p>作者：李清照</p>
+<blockquote>
+<p>《点绛唇·蹴罢秋千》</p>
+</blockquote>
+<blockquote>
+<p>蹴罢秋千，起来慵整纤纤手。露浓花瘦，薄汗轻衣透。<br>
+见客入来，袜刬金钗溜。和羞走，倚门回首，却把青梅嗅。</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[人言妙语]]></title>
+        <id>https://anki233.github.io/post/miao-yu/</id>
+        <link href="https://anki233.github.io/post/miao-yu/">
+        </link>
+        <updated>2019-07-21T05:30:23.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%91%98%E8%87%AA%E5%89%91%E6%9D%A5%E7%9A%84%E8%AF%AD%E5%8F%A5">摘自《剑来》的语句</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h3 id="摘自剑来的语句">摘自《剑来》的语句</h3>
+<blockquote>
+<p>世间道理，其实一直在，有人捡起，奉若圭臬，视为珍宝，有人不屑，甚至还有人会踩上几脚。<br>
+这不是道理不对，不好。<br>
+而是人心出了问题。</p>
+</blockquote>
+<blockquote>
+<p>人生路上，有人在荒芜中看到了一朵花儿，看到了就会觉得有希望，有些人<br>
+见不得别人好，见不得别人对，就只能看到遍地的屎，吃着满嘴的屎，觉得<br>
+味道还蛮好，见不得别人不吃屎，毕竟……吃屎也是能吃饱的。</p>
+</blockquote>
+<blockquote>
+<p>人这一辈子，最幸运的莫过于千万人之中遇见你所要遇见的人，陪她一起<br>
+让毫无意义的人生变得有意义。</p>
+</blockquote>
+<blockquote>
+<p>在追不上的时候，才去追；在味道尽去的时候，才想去品；在不得已时候，<br>
+才珍惜得已；在人生的大片美好过到支离破碎后，才去捡拾一些碎片，拼<br>
+凑美好，这没有任何意义。</p>
+</blockquote>
+<blockquote>
+<p>我觉得天底下最不能出问题的地方，不是在龙椅上，甚至不是在山上，<br>
+而是在世间大大小小的学塾课堂上，如果这里出了问题，难救。</p>
+</blockquote>
+<blockquote>
+<p>一句叫做如人饮水，冷暖自知，一句叫做将心比心，便是佛心。<br>
+第一句是告诉你，有时候啊，一个寻常家境里走出来的普通姑娘，有一点计较，有一点攀比，有一点心眼，可能不讨喜，但也没犯什么错，或许很多年后，<br>
+十年、二十年她过上了自己希望的生活，才会觉得当初的自己很可笑，很傻，但那也是很正常的事情。很多开始没见过世面的女子都这样，<br>
+可那也只是面对陌生世界的一点窘相，仅此而已。<br>
+至于第二句话，便是告诉你做人要将心比心，不要因为一点必然的小事就觉得别人变了，不好了，相反还要更努力的争取，因为青梅竹马，是多美好的事情啊。</p>
+</blockquote>
+<blockquote>
+<p>所以在小的时候，父母以身教子女仁义，稍大一些，学塾先生教弟子本上的仁义。两者相辅相成，前者往高处教，缺一不可，相互拆台更不行。<br>
+一开始，孩子听父母。随后学生听先生。长大后，弱者听强者，贫者听富者，臣子听君王，又比如山下听山上，山上听山顶。那么问题来了，<br>
+强者若是说的不对，弱者却将强者的所有言语道理，死心塌地奉为圭臬，怎么办？道德仁义，已经很难有效了，就需要有法，世上得有一种东西，<br>
+比山上的所有仙家木法，更让人敬畏，让所谓的强者都束手束脚，让这些人像犯错的孩子畏惧父母的训斥，像是教书先生的鸡毛掸子和戒尺，<br>
+一犯错就会立即敲在手心，知道疼。</p>
+</blockquote>
+<blockquote>
+<p>行走江湖，要多加小心。不可有害人之心，但是如果连防人之心都没有，岂不是<br>
+白白便宜了坏人？时时刻刻都讲究表面上的待人以诚，对谁都掏心窝子，财帛动<br>
+人心，反而只会让江湖更加险恶。真正的待人以诚，自是一件很美好的事情，但<br>
+是如何呵护好它，不伤人不害己，就需要自己积攒江湖阅历了。<br>
+心善莫幼稚，老道莫城府，此等金玉良言，是书上的真正道理。</p>
+</blockquote>
+<blockquote>
+<p>只不过学问是学问，为人是为人，有些关系，却无绝对关系。所以才有了世事复杂。一个人如何活，跟读了哪些书，读了书有无用，<br>
+都是自己的缘法因果。世上笨蛋实在太多，不知道读书一事，首要之事，是让我们更多认识这个世道，白瞎了三教百家圣贤们的苦口婆心。<br>
+圣人传授学问，一本本经籍，就像一盏盏悬挂夜间的灯笼，道路有不同，灯笼有大有小，只可惜世人自己睁眼瞎。</p>
+</blockquote>
+<blockquote>
+<p>陈平安看着这一幕，虽然言语不通，可他本就是泥瓶巷这种穷苦地方出身，熟知<br>
+市井底层的磕磕碰碰，晓得那些慢慢消磨人心的鸡毛蒜皮，所以陈平安大致猜得<br>
+出来，等到那个孩子年纪再大一些，恐怕就会知道他爹娘的各自辛酸了吧，可能<br>
+在学塾读书会更用功一些，可能平时笑容会少很多，可能会觉得心目中顶天立地<br>
+的父亲，原来其实有些窝囊，会跟着娘亲一起嫌弃，但也有可能会在今天回家的<br>
+路上，就会帮着他爹扛着那条子肉，然后他爹娘就会和好如初，觉得日子到底是<br>
+能过下去的。</p>
+</blockquote>
+<blockquote>
+<p>言传身教，又以后者更重要，言传为虚，身教为实，因为孩子未必听得懂大人的那些道理，<br>
+但是对世界最好奇，要孩子耳朵里听得进、装得下道理，很难，孩子眼睛里看见更多，<br>
+更容易记住这个世道的大致模样，比较浅显，黑白分明，稚嫩却尤为可贵，这么潜移默化下去，<br>
+自己却浑然不觉，点点滴滴，年年月月，心目中的世界就定型了，再难更改。<br>
+所以好些个看似长大成人后，有违旁人印象的一些莫名其妙的举措，其实早就有迹可循。<br>
+在一个打磨器型的关键时刻，父母的言行，至关重要，一句做错了事却骂不到点子上的训斥，或是做错了，<br>
+干脆就觉得自家孩子年纪太小，选择视而不见，最后可不就是害人害己害子女嘛。<br>
+所以要赏罚分明，父母要学会给子女立规矩。仁义，理之本也。刑法，理之末也。</p>
+</blockquote>
+<blockquote>
+<p>你这个年纪，总有做不到，或是努力做了，也做不好的事情。有什么关系呢，没关系的。<br>
+可做得不好，与做错，是两回事。岁数小，犯了错不用怕，可这不是知错不改的理由。<br>
+如果你有明事理的爹娘，犯了错，会打你骂你。如果上了学塾，先生夫子会拿戒尺、板子抽你的手心。</p>
+</blockquote>
+<h3 id="其他">其他</h3>
+<blockquote>
+<p>爱情，它让所有的事都有了科学依据。<br>
+Love! It makes a science of almost everything.</p>
+</blockquote>
+<blockquote>
+<p>没有人从一出生就是英雄。<br>
+亦没有人可以逃得了迷茫与惶恐。<br>
+因为成长便是这样一个过程，免不了对未来心生畏惧。</p>
+</blockquote>
+<blockquote>
+<p>是的，所有的小孩子都希望自己快点成熟快点长大。以为长大后就可以逃出书院<br>
+，就可以不再面对喋喋不休的父母，就可以遇见一个漂亮的姑娘，就好像她一直<br>
+在等着你，就在未来的某一处。只要你赶到那里，对她张开双臂，微笑的说一声“我来了。”<br>
+她就会放下一切投入你的怀里。<br>
+但事实上，当你长大了，你会发现书院其实是个很好的地方，那里有你喜欢的姑娘，她一直在那里，就算她从来不曾看你一眼，<br>
+但至少她会一直在那里，不曾离开，也不曾嫁做人妇。父母虽然依旧喋喋不休，但他们年轻又强壮，足以为你挡下所有风雨。但当你长大了，<br>
+你必须独自面对这个世界，它即美丽又残忍，像玫瑰，鲜艳却带刺。</p>
+</blockquote>
+<blockquote>
+<p>但我却还不能死。<br>
+是啊，我怎能这么死去。<br>
+天岚的种子还未发芽。<br>
+过往的英魂尚在那片星海中沉睡。<br>
+恶神却再次向世界伸出了爪牙。<br>
+这世界虽不美丽。<br>
+但那些美丽的人却曾在这里活着，然后死去。<br>
+在那些可以守望这个世界的人到来之前。<br>
+我怎能安然入眠。</p>
+</blockquote>
+<blockquote>
+<p>人生苦难书，最能教做人。</p>
+</blockquote>
+<blockquote>
+<p>大部分人并不想长大，只是没办法继续当一个小孩子。</p>
+</blockquote>
+<blockquote>
+<p>本来人在生活中，就会为他人带来一定的困扰。</p>
+</blockquote>
+<blockquote>
+<p>生活可以平淡，但一定要有仪式感。</p>
+</blockquote>
+<blockquote>
+<p>爱情，它让所有的事都有了科学依据。<br>
+Love! It makes a science of almost everything.</p>
+</blockquote>
 ]]></content>
     </entry>
 </feed>
