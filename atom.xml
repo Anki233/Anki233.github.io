@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://anki233.github.io</id>
     <title>悠悠小路</title>
-    <updated>2021-05-04T10:32:22.942Z</updated>
+    <updated>2021-06-22T15:18:21.623Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://anki233.github.io"/>
     <link rel="self" href="https://anki233.github.io/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://anki233.github.io/images/avatar.png</logo>
     <icon>https://anki233.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 悠悠小路</rights>
+    <entry>
+        <title type="html"><![CDATA[下一个目标]]></title>
+        <id>https://anki233.github.io/post/xia-yi-ge-mu-biao/</id>
+        <link href="https://anki233.github.io/post/xia-yi-ge-mu-biao/">
+        </link>
+        <updated>2021-06-22T15:12:40.000Z</updated>
+        <content type="html"><![CDATA[<p>按照教程把网易云课堂上的uni-app实战仿微信app开发完成。冲😀</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[今日面试题总结2]]></title>
         <id>https://anki233.github.io/post/jin-ri-mian-shi-ti-zong-jie-2/</id>
